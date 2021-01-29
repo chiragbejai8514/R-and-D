@@ -1,0 +1,1456 @@
+import React from 'react'
+import PropTypes from 'prop-types'
+import { graphql } from 'gatsby'
+import ReactFullpage from '@fullpage/react-fullpage'
+import { Responsive, WidthProvider } from "react-grid-layout"
+import ReactMarkdown from 'react-markdown'
+import Layout from '../components/Layout'
+
+import './index-page.css'
+import LogoText from '../img/logo-text.svg'
+
+import { createBrowserHistory } from 'history';
+
+export const history = createBrowserHistory();
+
+const pluginWrapper = () => {}
+const ResponsiveReactGridLayout = WidthProvider(Responsive)
+
+const HomeSection = ({ data, active, randomImageIdx }) => (
+  <div className="section section--skewed-right-bottom section--hero fp-section fp-table active fp-completely" data-anchor="home" data-fp-styles="null">
+    <div className="fp-tableCell">
+      <div className="hero hero-custom" style={{"height": "100%" }}>
+        <div className="wrapper">
+          <div className={`hero__bg  delay-700 ${!active ? 'hero__bg--out' : ''}`} style={{backgroundImage: `url(${data.images[randomImageIdx].image.childImageSharp && data.images[randomImageIdx].image.childImageSharp.fluid.src})`}}></div>
+          <div className="hero__body">
+            <h1 className={`hero__title fade-up duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}> {data.title}</h1>
+            <p className={`hero__text fade-up duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}>{data.subtitle}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+)
+
+const TechnologySection = ({ data, active, onShowLearnMore }) => (
+  <div className="section fp-auto-height fp-section fp-table" data-anchor="technology" data-fp-styles="null">
+    <div className="fp-tableCell">
+      <div className="fp-scroller fp-scroller-custom">
+        <section className="module module--technology">
+          <div className="wrapper">
+            <div className="module__body">
+              <div className="module__content module__content--visible">
+                <h2 className={`module__title fade-right duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}>technology</h2>
+                <h3 className={`fade-up duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}>{data.title}</h3>
+                <p className={`fade-up duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}>{data.description}</p>
+                <img alt="Chip" className={`module__aux-img module__aux-img--right module__chip-img fade-left duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`} src={data.image.childImageSharp && data.image.childImageSharp.fluid.src} />
+                <div className="module__wide-block">
+                  <div className={`diagram diagram--technology fade-up duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}>
+                    <div className="diagram__title">Perception<br />Prediction loops</div>
+                    <div className="diagram__body">
+                      <div className="diagram__item diagram__item--sm diagram__item--with-arrow">Sensors
+                        <span className="diagram__sensors-icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+                            <title>SENSOR_ICON</title>
+                            <g id="Layer_2" data-name="Layer 2">
+                            <g id="MODULE_2_TECHNOLOGY">
+                            <g id="GRAPH">
+                              <path className="cls-1" d="M40,21.28l-9.76,3.17V19.37a2.77,2.77,0,0,0-2.78-2.78H2.78A2.78,2.78,0,0,0,0,19.37V37.22A2.79,2.79,0,0,0,2.78,40H27.46a2.78,2.78,0,0,0,2.78-2.78v-3.5L40,36.24ZM29.27,37.22A1.81,1.81,0,0,1,27.46,39H2.78A1.8,1.8,0,0,1,1,37.22V19.37a1.8,1.8,0,0,1,1.8-1.81H27.46a1.81,1.81,0,0,1,1.81,1.81ZM39,35l-8.78-2.27V25.47L39,22.62Z"></path>
+                              <path className="cls-1" d="M15.12,1a10,10,0,0,1,9.31,6l.9-.38A11,11,0,0,0,15.12,0,10.94,10.94,0,0,0,4.92,6.64l.9.38A10,10,0,0,1,15.12,1Z"></path>
+                              <path className="cls-1" d="M21.27,9.8l.91-.36A7.62,7.62,0,0,0,15.1,4.75a7.53,7.53,0,0,0-7,4.58L9,9.7a6.57,6.57,0,0,1,6.13-4A6.64,6.64,0,0,1,21.27,9.8Z"></path>
+                              <path className="cls-1" d="M11.28,12l.9.37a3.25,3.25,0,0,1,5.89-.06l.89-.39a4.21,4.21,0,0,0-7.68.08Z"></path>
+                              <polygon className="cls-1" points="25.37 35.12 20 35.12 20 36.1 26.34 36.1 26.34 29.76 25.37 29.76 25.37 35.12"></polygon>
+                              <polygon className="cls-1" points="3.9 26.83 4.88 26.83 4.88 21.46 10.24 21.46 10.24 20.49 3.9 20.49 3.9 26.83"></polygon>
+                            </g></g></g>
+                          </svg>
+                        </span>
+                        <div className="diagram__item diagram__item--sm diagram__item--sm-rounded diagram__item--inner">EDGE LEARNING</div>
+                      </div>
+                      <div className="diagram__item diagram__item--sm diagram__item--sm-rounded">Real time data</div>
+                      <div className="diagram__item diagram__item--point">
+                        <div className="diagram__point diagram__point--purple">Artificial Intelligence</div>
+                      </div>
+                      <div className="diagram__item diagram__item--point">
+                        <div className="diagram__point diagram__point--pink">High performance compute</div>
+                      </div>
+                      <div className="diagram__item diagram__item--point diagram__item--with-arrow">
+                        <div className="diagram__point diagram__point--grey">Prediction</div>
+                      </div>
+                      <div className="diagram__item diagram__item--sm diagram__item--sm-rounded">Decision</div>
+                    </div>
+                  </div>
+                </div>
+                <a className={`demo-link demo-link--medium-bottom aos-init aos-animate`} data-toggle="document" href="#whitepaper" onClick={onShowLearnMore}>Learn more</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      {active && <div className="iScrollVerticalScrollbar iScrollLoneScrollbar iScrollVerticalScrollbar-custom">
+        <div className="iScrollIndicator iScrollIndicator-custom"></div>
+      </div>}
+    </div>
+  </div>
+)
+
+const BenefitSection = ({ data, active, onShowLearnMore }) => (
+  <div className="section fp-auto-height fp-section fp-table" data-anchor="benefits" data-fp-styles="null">
+    <div className="fp-tableCell">
+      <div className="fp-scroller fp-scroller-custom">
+        <section className="module module--technology">
+          <div className="wrapper">
+            <div className="module__body">
+              <div className="module__content module__content--visible">
+                <h2 className={`module__title mobile-hidden fade-right duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}>technology</h2>
+                <h2 className="module__title mobile-visible aos-init aos-animate aos-animate">benefits</h2>
+                <p className={`module__before-aux-img-text fade-up duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}>
+                  <span>{data.description}</span>
+                </p>
+                <img alt="Chip" className={`module__aux-img module__aux-img--right module__chip-img module__chip-img--angled fade-up duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`} src={data.image.childImageSharp && data.image.childImageSharp.fluid.src} />
+                <div className="module__content-columns">
+                  <div className={`module__content-column fade-up duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}>
+                    <span><strong>{data.heading1}</strong></span>
+                    <ul>
+                      <li>{data.content1}</li>
+                    </ul>
+                  </div>
+                  <div className={`module__content-column fade-up duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}>
+                    <span><strong>{data.heading2}</strong></span>
+                    <ul>
+                      <li>{data.content2}</li>
+                    </ul>
+                  </div>
+                  <div className={`module__content-column fade-up duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}>
+                    <span><strong>{data.heading3}</strong></span>
+                    <ul>
+                      <li>{data.content3}</li>
+                    </ul>
+                  </div>
+                </div>
+                <a className={`demo-link demo-link--bottom fade-down duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`} data-toggle="document" href="#whitepaper" onClick={onShowLearnMore}>Learn more</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      {active && !active && <div className="iScrollVerticalScrollbar iScrollLoneScrollbar iScrollVerticalScrollbar-custom">
+        <div className="iScrollIndicator iScrollIndicator-custom-1"></div>
+      </div>}
+    </div>
+  </div>
+)
+
+const IndustrySection = ({ data, active, onShowLearnMore }) => (
+  <div className="section fp-auto-height section--technology fp-section fp-table" data-anchor="industries" data-fp-styles="null">
+    <div className="fp-tableCell">
+      <div className="fp-scroller fp-scroller-custom">
+        <section className="module module--technology module--industries">
+          <div className="wrapper">
+            <div className="module__body">
+              <div className="module__content module__content--visible">
+                <h2 className={`module__title mobile-hidden fade-right duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}>technology</h2>
+                <h2 className="module__title mobile-visible aos-init aos-animate aos-animate">industries</h2>
+                <p className={`fade-up duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}>
+                  <span>{data.description}</span>
+                </p>
+                <div className="module__wide-block">
+                  <a className={`demo-link demo-link--top zoom-in duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`} data-toggle="document" href="#whitepaper" onClick={onShowLearnMore}>Learn more</a>
+                  <div className={`diagram diagram--industries fade-up duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}>
+                    <div className="diagram__body">
+                      <div className="diagram__item diagram__item--lg diagram__item--lg-rounded">Sensors</div>
+                      <div className="diagram__item diagram__item--point">
+                        <div className="diagram__point diagram__point--grey">Transportation</div>
+                      </div>
+                      <div className="diagram__item diagram__item--point">
+                        <div className="diagram__point diagram__point--purple">Smart surveillance</div>
+                      </div>
+                      <div className="diagram__item diagram__item--point">
+                        <div className="diagram__point diagram__point--pink">Industrial Robotics</div>
+                      </div>
+                      <div className="diagram__item diagram__item--point">
+                        <div className="diagram__point diagram__point--white">Augmented reality</div>
+                      </div>
+                      <div className="diagram__item diagram__item--lg diagram__item--lg-rounded">Decisions</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      {active && !active && <div className="iScrollVerticalScrollbar iScrollLoneScrollbar iScrollVerticalScrollbar-custom">
+        <div className="iScrollIndicator iScrollIndicator-custom-2"></div>
+      </div>}
+    </div>
+  </div>
+)
+
+const AboutSection = ({ data, active }) => (
+  <div className="section fp-auto-height fp-section fp-table" data-anchor="about" data-fp-styles="null">
+    <div className="fp-tableCell">
+      <div className="fp-scroller fp-scroller-custom">
+        <section className="module module--light">
+          <div className="wrapper">
+            <div className="module__body">
+              <div className="module__content module__content--visible">
+                <h2 className={`module__title fade-right duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}>about</h2>
+                <div className={`module__content-body fade-up duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}>
+                  <ReactMarkdown source={data.content} />
+                </div>
+                <div className="module__bg aos-init aos-animate" style={{backgroundImage: `url(${data.image.childImageSharp && data.image.childImageSharp.fluid.src})`}}></div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      {active && !active && <div className="iScrollVerticalScrollbar iScrollLoneScrollbar iScrollVerticalScrollbar-custom">
+        <div className="iScrollIndicator iScrollIndicator-custom-3"></div>
+      </div>}
+    </div>
+  </div>
+)
+
+class ContactSection extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      showForm: false,
+      firstName: '',
+      lastName: '',
+      email: '',
+      content: '',
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!this.props.active && nextProps.active) {
+      this.setState({
+        showForm: false,
+      })
+    }
+  }
+
+  render() {
+    const {
+      showForm,
+      firstName,
+      lastName,
+      email,
+      content,
+    } = this.state
+    const { active, data, width, onShowForm } = this.props
+    const layout = {
+      lg: data.map(m => {
+        return {
+          i: m.name,
+          x: m.lg.x,
+          y: m.lg.y,
+          w: m.lg.width,
+          h: m.lg.height,
+        }
+      }),
+      md: data.map(m => {
+        return {
+          i: m.name,
+          x: m.md.x,
+          y: m.md.y,
+          w: m.md.width,
+          h: m.md.height,
+        }
+      }),
+      sm: data.map(m => {
+        return {
+          i: m.name,
+          x: m.sm.x,
+          y: m.sm.y,
+          w: m.sm.width,
+          h: m.sm.height,
+        }
+      }),
+      xs: data.map(m => {
+        return {
+          i: m.name,
+          x: m.xs.x,
+          y: m.xs.y,
+          w: m.xs.width,
+          h: m.xs.height,
+        }
+      }),
+    }
+    let rowHeight = 10
+    if (width < 576) {
+      rowHeight = 5
+    } else if (width < 1040) {
+      rowHeight = 12
+    } else if (width < 1300) {
+      rowHeight = 16
+    }
+
+    return (
+      <div className="section fp-auto-height fp-section fp-table section--with-footer" data-anchor="investors" data-fp-styles="null">
+        <div className="fp-tableCell">
+          <div className="fp-scroller fp-scroller-custom">
+            <section className="module module--light module--before-contact">
+              <div className="wrapper">
+                <div className="module__body">
+                  <div className="module__content module__content--visible">
+                    <h2 className={`module__title mobile-hidden fade-in duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}>about</h2>
+                    <h2 className="module__title mobile-visible aos-init aos-animate">investors</h2>
+                    <div className="module__wide-block">
+                      <div className="module__safe-area">
+                        <div className={`grid grid--investors fade-up duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}>
+                          <ResponsiveReactGridLayout
+                            className="layout"
+                            layouts={layout}
+                            cols={{lg: 60, md: 60, sm: 30, xs: 30, xxs: 30}}
+                            rowHeight={rowHeight}
+                            isDraggable= {false}
+                            isResizable= {false}
+                            breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
+                          >
+                            {data.map(investor => (<a key={investor.name} className="grid__item" href={investor.website}>
+                              <img alt="investor" className="grid__img" src={investor.image.childImageSharp && investor.image.childImageSharp.fluid.src} />
+                            </a>))}
+                          </ResponsiveReactGridLayout>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <div className={`module module--purple module--contact  ${showForm ? 'module--contact-open' : ''}`} id="contact" style={{bottom: '239px'}}>
+              <div className="wrapper">
+                <div className="module__columns">
+                  <div className="module__column module__column--wide">
+                    {showForm && <form action="https://quadric.us20.list-manage.com/subscribe/post?u=880ba654a6e7a6699c5910f4d&amp;amp;id=7756fd12bb" className="form form--contact validate" id="mc-embedded-subscribe-form" method="post" name="mc-embedded-subscribe-form" target="_blank">
+                      <div className="form__row">
+                        <div className="form__column">
+                          <input
+                            className="form__control required"
+                            id="mce-FNAME"
+                            name="FNAME"
+                            placeholder="First name"
+                            required=""
+                            type="text"
+                            value={firstName}
+                            onChange={e => this.setState({ firstName: e.target.value })}
+                          />
+                        </div>
+                        <div className="form__column">
+                          <input
+                            className="form__control"
+                            id="mce-LNAME"
+                            name="LNAME"
+                            placeholder="Last name"
+                            required=""
+                            type="text"
+                            value={lastName}
+                            onChange={e => this.setState({ lastName: e.target.value })}
+                          />
+                        </div>
+                      </div>
+                      <div className="form__row">
+                        <div className="form__column">
+                          <input
+                            className="form__control required email"
+                            id="mce-EMAIL"
+                            name="EMAIL"
+                            placeholder="Email"
+                            required=""
+                            type="email"
+                            value={email}
+                            onChange={e => this.setState({ email: e.target.value })}
+                          />
+                        </div>
+                      </div>
+                      <div className="form__row">
+                        <textarea
+                          className="form__control"
+                          required=""
+                          name="MERGE5"
+                          onChange={e => this.setState({ content: e.target.value })}
+                        >
+                          {content}
+                        </textarea>
+                      </div>
+                      <div className="form__row">
+                        <input
+                          value="Submit"
+                          name="subscribe"
+                          id="mc-embedded-subscribe"
+                          className="form__submit"
+                          type="submit"
+                        />
+                      </div>
+                    </form>}
+                  </div>
+                  <div className="module__column">
+                    <h2>
+                      <span className="contact-toggler" onClick={() => { this.setState({ showForm: !showForm }); onShowForm(showForm); }}>
+                        Stay in Touch<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><title>Asset 48</title><g data-name="Layer 2"><g><path className="cls-1" d="M12.12,11.72V0h5.76V11.72H30v6.5H17.88V30H12.12V18.22H0v-6.5Z"></path></g></g></svg>
+                      </span>
+                    </h2>
+                    <div className="contact">
+                      <h4 className="contact__title">headquarters</h4>
+                      <p className="contact__text">
+                        <span>330 Primrose Rd Ste 306<br />Burlingame</span>
+                        <span>,&nbsp;</span>
+                        <span>CA</span>
+                        <span>&nbsp;</span>
+                        <span>94010</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <footer className="footer">
+              <div className="wrapper">
+                <div className="footer__row footer__row--top">
+                  <a className="footer__logo" href="https://quadric.io/">
+                    <img alt="Quadric" src={LogoText} />
+                  </a>
+                  <ul className="footer__list footer__list--vertical">
+                    <li className="footer__list-item">
+                      <a className="footer__list-link" href="#technology">Technology</a>
+                    </li>
+                    <li className="footer__list-item">
+                      <a className="footer__list-link" href="#benefits">Benefits</a>
+                    </li>
+                    <li className="footer__list-item">
+                      <a className="footer__list-link" href="#industries">Industries</a>
+                    </li>
+                  </ul>
+                  <ul className="footer__list footer__list--vertical">
+                    <li className="footer__list-item">
+                      <a className="footer__list-link" href="#about">About</a>
+                    </li>
+                    <li className="footer__list-item">
+                      <a className="footer__list-link" href="#team">Team</a>
+                    </li>
+                    <li className="footer__list-item">
+                      <a className="footer__list-link" href="#investors">Investors</a>
+                    </li>
+                  </ul>
+                  <ul className="footer__list footer__list--vertical">
+                    <li className="footer__list-item">
+                      <a className="footer__list-link" data-toggle="modal" data-menuanchor="team" href="#join-the-team">Careers</a>
+                    </li>
+                    <li className="footer__list-item">
+                      <a className="footer__list-link" data-toggle="modal" data-menuanchor="investors" href="#contact">Contact</a>
+                    </li>
+                  </ul>
+                  <ul className="footer__list footer__list--vertical">
+                    <li className="footer__list-item">
+                      <a className="footer__list-link" target="_blank" rel="noopener noreferrer" href="https://twitter.com/quadric_io">Twitter</a>
+                    </li>
+                    <li className="footer__list-item">
+                      <a className="footer__list-link" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/company/quadric.io">Linkedin</a>
+                    </li>
+                  </ul>
+                </div>
+                <div className="footer__row">
+                  <ul className="footer__list footer__list--horizontal">
+                    <li className="footer__list-item">© 2019 Quadric. All Rights Reserved</li>
+                    <li className="footer__list-item footer__list-item--before-site-by">
+                      <a className="footer__list-link" href="http://bit.ly/qpriv">Privacy</a>
+                    </li>
+                    <li className="footer__list-item footer__list-item--site-by">
+                      <span>site by:&nbsp;</span>
+                      <a target="_blank" className="footer__list-link" rel="noopener noreferrer" href="https://meadow.cc/">MEADOW DESIGN INC</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </footer>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
+class TeamSection extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      activeMember: '',
+      showJoinOurTeam: false,
+    }
+    
+  }
+
+  clearActiveMember=()=>{
+    this.setState({
+      activeMember: '',
+      showJoinOurTeam: false,
+    });
+  }
+
+  componentDidUpdate() {  
+      window.onpopstate =(()=> {
+        
+        if(this.state.activeMember!==''||this.state.showJoinOurTeam)
+        {
+          this.clearActiveMember();
+          history.go(1)
+          console.log(this.state.activeMember.length)
+      }
+    }) 
+   }
+    
+  componentWillReceiveProps(nextProps) {
+     if (this.props.hideModal !== nextProps.hideModal) {
+      this.clearActiveMember();
+    }
+  }
+
+
+
+  onBreakpointChange = breakpoint => {
+    this.setState({
+      currentBreakpoint: breakpoint
+    });
+  };
+
+  render() {
+    const { activeMember, showJoinOurTeam } = this.state
+    const {
+      active,
+      data,
+      width,
+      joinOurTeam,
+      layout,
+      members,
+    } = this.props
+
+    const joinOurTeamLayout = {
+      lg: joinOurTeam.photos.map((m, index) => {
+        return {
+          i: ((m.image.childImageSharp && m.image.childImageSharp.fluid.src) || index),
+          x: m.lg.x,
+          y: m.lg.y,
+          w: m.lg.width,
+          h: m.lg.height,
+        }
+      }),
+      md: joinOurTeam.photos.map((m, index) => { 
+        return {
+          i: ((m.image.childImageSharp && m.image.childImageSharp.fluid.src) || index),
+          x: m.md.x,
+          y: m.md.y,
+          w: m.md.width,
+          h: m.md.height,
+        }
+      }),
+      sm: joinOurTeam.photos.map((m, index) => {
+        return {
+          i: ((m.image.childImageSharp && m.image.childImageSharp.fluid.src) || index),
+          x: m.sm.x,
+          y: m.sm.y,
+          w: m.sm.width,
+          h: m.sm.height,
+        }
+      }),
+      xs: joinOurTeam.photos.map((m, index) => {
+        return {
+          i: ((m.image.childImageSharp && m.image.childImageSharp.fluid.src) || index),
+          x: m.xs.x,
+          y: m.xs.y,
+          w: m.xs.width,
+          h: m.xs.height,
+        }
+      }),
+    }
+    let rowHeight = 10
+    if (width < 768) {
+      rowHeight = 1
+    } else if (width < 1040) {
+      rowHeight = 5
+    } else if (width < 1300) {
+      rowHeight = 6
+    }
+    let joinOurTeamRowHeight = 10
+    if (width < 500) {
+      joinOurTeamRowHeight = 4
+    } else if (width < 600) {
+      joinOurTeamRowHeight = 10
+    } else if (width < 768) {
+      joinOurTeamRowHeight = 15
+    } else if (width < 1040) {
+      joinOurTeamRowHeight = 10
+    } else if (width < 1330) {
+      joinOurTeamRowHeight = 20
+    }
+
+    return (<>
+      <div className="section fp-auto-height fp-section fp-table" data-anchor="team" data-fp-styles="null">
+        <div className="fp-tableCell">
+          <div className="fp-scroller fp-scroller-custom">
+            <section className="module module--light">
+              <div className="wrapper">
+                <div className="module__body">
+                  <div className="module__content module__content--visible">
+                    <div className="module__content-inner">
+                      <h2 className={`module__title mobile-hidden fade-in duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}>about</h2>
+                      <h2 className="module__title mobile-visible aos-init aos-animate aos-animate">team</h2>
+                      <p className={`fade-up duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}>
+                        <span>{data.description}</span>
+                      </p>
+                      <div className="module__wide-block">
+                        <div className={`grid grid--team fade-up duration-400 delay-700 aos-init ${active ? 'aos-animate' : ''}`}>
+                          <ResponsiveReactGridLayout
+                            className="layout"
+                            layouts={layout}
+                            cols={{lg: 60, md: 60, sm: 60, xs: 60, xxs: 60}}
+                            rowHeight={rowHeight}
+                            breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
+                            isDraggable= {false}
+                            isResizable= {false}
+                            onBreakpointChange={this.onBreakpointChange}
+                          >
+                            {members.map(member => (<div key={member.key}>
+                              <div className="grid__item" onClick={() => this.setState({ activeMember: member.key })} style={{backgroundImage: `url(${member.thumbPhoto.childImageSharp && member.thumbPhoto.childImageSharp.fluid.src})`}} data-toggle="modal">
+                                <div className="grid__item-info">
+                                  <h3 className="grid__item-title">{member.name}</h3>
+                                  <h5 className="grid__item-sub-title">{member.position}</h5>
+                                  {member.position && <span className="grid__item-arrow"></span>}
+                                </div>
+                              </div>
+                            </div>))}
+                          </ResponsiveReactGridLayout>
+                          <div className="grid__item grid__item--text">
+                            <span className="grid__cta" data-toggle="modal" onClick={() => this.setState({ showJoinOurTeam: !showJoinOurTeam }) }>Join our team
+                              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><title>Asset 48</title><g data-name="Layer 2"><g><path className="cls-1" d="M12.12,11.72V0h5.76V11.72H30v6.5H17.88V30H12.12V18.22H0v-6.5Z"></path></g></g></svg>
+                            </span>
+                        </div>
+                        {/* <div style={{height: '1000px'}}></div> */}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="module module--light module--modal module--team-modal" id="pablo-levi">
+                    <div className="wrapper">
+                      <div className="module__content">
+                        <h2 className="module__title aos-init">Pablo Levi</h2>
+                        <a className="module__close-btn" href="https://quadric.io/#">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><defs></defs><title>Get_In_Touch_Close_CTA</title><g data-name="Layer 2"><g><path className="cls-1" d="M10,14.69.33,5.06,5.06.33,14.69,10l10-10L30,5.34l-10,10L29.72,25,25,29.72,15.31,20l-10,10L0,24.66Z"></path></g></g></svg>
+                        </a>
+                        <div className="module__member-img aos-init" style={{backgroundImage: 'url(https://quadric.io/uploads/attachment/file/119/client_qdc190319-1863.jpg)'}}></div>
+                        <p className="aos-init"></p>
+                        <p>
+                          <span><strong>Chief Executive Officer</strong><br /><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus et molestie ac feugiat sed lectus. Eleifend mi in nulla posuere sollicitudin. Non pulvinar neque laoreet suspendisse interdum consectetur libero id. Dolor morbi non arcu risus quis varius quam quisque. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in. Mi bibendum neque egestas congue quisque egestas diam in arcu. Montes nascetur ridiculus mus mauris vitae. Aliquam sem fringilla ut morbi tincidunt augue interdum velit. Arcu cursus vitae congue mauris rhoncus aenean vel. Vestibulum lectus mauris ultrices eros in cursus turpis. Sagittis eu volutpat odio facilisis mauris. Quam viverra orci sagittis eu volutpat odio facilisis mauris. Vulputate ut pharetra sit amet aliquam id diam. Morbi quis commodo odio aenean. Accumsan tortor posuere ac ut consequat semper.</span>
+                        </p>
+                        <p></p>
+                        <dl className="data-list aos-init"></dl>
+                        <div className="quote aos-init">
+                          <p>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus et molestie ac feugiat sed lectus. Eleifend mi in nulla posuere sollicitudin.&nbsp;</span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="module module--light module--modal module--team-modal" id="rich-goldstein">
+                    <div className="wrapper">
+                      <div className="module__content">
+                        <h2 className="module__title aos-init">Rich Goldstein</h2>
+                        <a className="module__close-btn" href="https://quadric.io/#">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><defs></defs><title>Get_In_Touch_Close_CTA</title><g data-name="Layer 2"><g><path className="cls-1" d="M10,14.69.33,5.06,5.06.33,14.69,10l10-10L30,5.34l-10,10L29.72,25,25,29.72,15.31,20l-10,10L0,24.66Z"></path></g></g></svg>
+                        </a>
+                        <div className="module__member-img aos-init" style={{backgroundImage: 'url(https://quadric.io/uploads/attachment/file/94/client_qdc190319-1763.jpg)'}}></div>
+                        <p className="aos-init"></p>
+                        <p>
+                          <span><strong>Chief Operating Officer</strong><br /><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus et molestie ac feugiat sed lectus. Eleifend mi in nulla posuere sollicitudin. Non pulvinar neque laoreet suspendisse interdum consectetur libero id. Dolor morbi non arcu risus quis varius quam quisque. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in. Mi bibendum neque egestas congue quisque egestas diam in arcu. Montes nascetur ridiculus mus mauris vitae. Aliquam sem fringilla ut morbi tincidunt augue interdum velit. Arcu cursus vitae congue mauris rhoncus aenean vel. Vestibulum lectus mauris ultrices eros in cursus turpis. Sagittis eu volutpat odio facilisis mauris. Quam viverra orci sagittis eu volutpat odio facilisis mauris. Vulputate ut pharetra sit amet aliquam id diam. Morbi quis commodo odio aenean. Accumsan tortor posuere ac ut consequat semper.</span>
+                        </p>
+                        <p></p>
+                        <dl className="data-list aos-init"></dl>
+                        <div className="quote aos-init">
+                          <p>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus et molestie ac feugiat sed lectus. Eleifend mi in nulla posuere sollicitudin.&nbsp;</span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="module module--light module--modal module--team-modal" id="mrinalini-ravichandran">
+                    <div className="wrapper">
+                      <div className="module__content">
+                        <h2 className="module__title aos-init">Mrinalini Ravichandran</h2>
+                        <a className="module__close-btn" href="https://quadric.io/#">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><defs></defs><title>Get_In_Touch_Close_CTA</title><g data-name="Layer 2"><g><path className="cls-1" d="M10,14.69.33,5.06,5.06.33,14.69,10l10-10L30,5.34l-10,10L29.72,25,25,29.72,15.31,20l-10,10L0,24.66Z"></path></g></g></svg>
+                        </a>
+                        <div className="module__member-img aos-init" style={{backgroundImage: 'url(https://quadric.io/uploads/attachment/file/120/client_qdc190319-1395-2.jpg)'}}></div>
+                        <p className="aos-init"></p>
+                        <p></p><p></p>
+                        <dl className="data-list aos-init"></dl>
+                        <div className="quote aos-init">
+                          <p></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className={`module module--light module--modal module--team-modal ${activeMember === 'ND' ? 'module--modal-on' : ''}`} id="nigel-drego">
+                    <div className="wrapper" >
+                      <div className="module__content">
+                        <h2 className="module__title aos-init">Nigel Drego</h2>
+                        <span className="module__close-btn" onClick={() => this.setState({ activeMember: '' })}>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><defs></defs><title>Close</title><g data-name="Layer 2"><g><path className="cls-1" d="M10,14.69.33,5.06,5.06.33,14.69,10l10-10L30,5.34l-10,10L29.72,25,25,29.72,15.31,20l-10,10L0,24.66Z"></path></g></g></svg>
+                        </span>
+                        <div className="module__member-img aos-init" style={{backgroundImage: 'url(https://quadric.io/uploads/attachment/file/122/client_qdc190319-1263-2.jpg)'}}></div>
+                        <p className="aos-init"></p>
+                        <p>
+                          <span><strong>Cofounder &amp; CTO</strong><br /><br />Prior to Quadric, Nigel was the Chief Architect &amp; Co-founder at 21, Inc. where he designed and built-out all of the technology the company used to mine bitcoin: ASICs, HPC systems as well as much of the software that operated those systems. Nigel developed 3 ASICs in 18 months (2 x 22nm, 1 x 40nm), and was the primary technical interaction point with Intel Custom Foundry. He was previously in a Research &amp; Development role spanning semiconductor test structure development &amp; software at PDF Solutions and also worked at Intel on ASIC flows for a block of high-performance microprocessor as well as automation for timing flows.</span>
+                        </p>
+                        <p></p>
+                        <dl className="data-list aos-init">
+                          <div className="data-list__row">
+                            <dt>Education</dt><dd><p><span>PhD, Electrical Engineering from MIT<br />MS, Electrical Engineering from MIT</span><span><br />BS, Computer Engineering from UC, Irvine</span></p></dd>
+                          </div>
+                          <div className="data-list__row">
+                            <dt>Linkedin</dt><dd><a className="link" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/nigeldrego/">View Profile</a></dd>
+                          </div>
+                        </dl>
+                        <div className="quote aos-init">
+                          <p><span>Nigel is responsible for quadric's technology stack, spanning software to silicon. Nigel's interests outside of technology include running (these days, primarily after his twin toddlers), powerlifting, photography and travel.</span></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="module module--light module--modal module--team-modal" id="aman-sikka">
+                    <div className="wrapper">
+                      <div className="module__content">
+                        <h2 className="module__title aos-init">Aman Sikka</h2>
+                        <a className="module__close-btn" href="https://quadric.io/#">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><defs></defs><title>Close</title><g data-name="Layer 2"><g><path className="cls-1" d="M10,14.69.33,5.06,5.06.33,14.69,10l10-10L30,5.34l-10,10L29.72,25,25,29.72,15.31,20l-10,10L0,24.66Z"></path></g></g></svg>
+                        </a>
+                        <div className="module__member-img aos-init" style={{backgroundImage: 'url(https://quadric.io/uploads/attachment/file/102/client_qdc190319-1005-2.jpg)'}}></div>
+                        <p className="aos-init"></p>
+                        <p>
+                          <span><strong>Chief Technology Officer</strong><br /><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus et molestie ac feugiat sed lectus. Eleifend mi in nulla posuere sollicitudin. Non pulvinar neque laoreet suspendisse interdum consectetur libero id. Dolor morbi non arcu risus quis varius quam quisque. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in. Mi bibendum neque egestas congue quisque egestas diam in arcu. Montes nascetur ridiculus mus mauris vitae. Aliquam sem fringilla ut morbi tincidunt augue interdum velit. Arcu cursus vitae congue mauris rhoncus aenean vel. Vestibulum lectus mauris ultrices eros in cursus turpis. Sagittis eu volutpat odio facilisis mauris. Quam viverra orci sagittis eu volutpat odio facilisis mauris. Vulputate ut pharetra sit amet aliquam id diam. Morbi quis commodo odio aenean. Accumsan tortor posuere ac ut consequat semper.</span>
+                        </p>
+                        <p></p>
+                        <dl className="data-list aos-init"></dl>
+                        <div className="quote aos-init">
+                          <p>
+                            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus et molestie ac feugiat sed lectus. Eleifend mi in nulla posuere sollicitudin.&nbsp;</span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className={`module module--light module--modal module--team-modal ${activeMember === 'DF' ? 'module--modal-on' : ''}`} id="daniel-firu">
+                    <div className="wrapper">
+                      <div className="module__content">
+                        <h2 className="module__title aos-init">Daniel Firu</h2>
+                        <span className="module__close-btn" onClick={() => this.setState({ activeMember: '' })}>
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><defs></defs><title>Close</title><g data-name="Layer 2"><g><path className="cls-1" d="M10,14.69.33,5.06,5.06.33,14.69,10l10-10L30,5.34l-10,10L29.72,25,25,29.72,15.31,20l-10,10L0,24.66Z"></path></g></g></svg>
+                        </span>
+                        <div className="module__member-img aos-init" style={{backgroundImage: 'url(https://quadric.io/uploads/attachment/file/124/client_qdc190319-946-2.jpg)'}}></div>
+                        <p className="aos-init"></p>
+                        <p>
+                          <span><strong>Cofounder &amp; CPO<br /></strong>Prior to Quadric, Daniel co-founded 21, Inc in 2013 with the goal of bringing high-performance compute to the cryptocurrency space. On the chip-side, Daniel handled microarchitecture of the cryptocurrency algorithms and oversaw the physical implementation and manufacturing of 21’s first chips. Daniel led the design and deployment of 21’s bitcoin mining systems into datacenters. During 21’s push to empower the developer with Bitcoin, Daniel was responsible for design, development, channel distribution and support of the 21 Bitcoin Computer. He led business development efforts for licensing 21’s Bitcoin-related IP. Prior to 21, Daniel was a Senior R&amp;D Engineer at PDF Solutions working on silicon big data collection, analytics and presentation methods.</span><span><br /></span>
+                        </p>
+                        <p></p>
+                        <dl className="data-list aos-init">
+                          <div className="data-list__row">
+                            <dt>Education</dt><dd><p><span>MS EECE University of Florida 2006<br />BS EECE University of Florida 2005</span></p></dd>
+                          </div>
+                          <div className="data-list__row">
+                            <dt>Linkedin</dt><dd><a className="link" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/dfiru/">View Profile</a></dd>
+                          </div>
+                        </dl>
+                        <div className="quote aos-init">
+                          <p>
+                            <span>Daniel leads product at Quadric. Daniel’s interests include robotics, 3d printing, and computing. Daniel believes that the confluence of these things will lead to better products, a safer world and more free time to do the things we enjoy.</span></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="module module--light module--modal module--team-modal" id="anand-kannan">
+                      <div className="wrapper">
+                        <div className="module__content">
+                          <h2 className="module__title aos-init">Anand Kannan</h2>
+                          <a className="module__close-btn" href="https://quadric.io/#">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><defs></defs><title>Get_In_Touch_Close_CTA</title><g data-name="Layer 2"><g><path className="cls-1" d="M10,14.69.33,5.06,5.06.33,14.69,10l10-10L30,5.34l-10,10L29.72,25,25,29.72,15.31,20l-10,10L0,24.66Z"></path></g></g></svg>
+                          </a>
+                          <div className="module__member-img aos-init" style={{backgroundImage: 'url(https://quadric.io/uploads/attachment/file/126/client_qdc190319-89.jpg)'}}></div>
+                          <p className="aos-init"></p>
+                          <p>
+                            <span><strong>Chief Executive Officer</strong><br /><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus et molestie ac feugiat sed lectus. Eleifend mi in nulla posuere sollicitudin. Non pulvinar neque laoreet suspendisse interdum consectetur libero id. Dolor morbi non arcu risus quis varius quam quisque. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in. Mi bibendum neque egestas congue quisque egestas diam in arcu. Montes nascetur ridiculus mus mauris vitae. Aliquam sem fringilla ut morbi tincidunt augue interdum velit. Arcu cursus vitae congue mauris rhoncus aenean vel. Vestibulum lectus mauris ultrices eros in cursus turpis. Sagittis eu volutpat odio facilisis mauris. Quam viverra orci sagittis eu volutpat odio facilisis mauris. Vulputate ut pharetra sit amet aliquam id diam. Morbi quis commodo odio aenean. Accumsan tortor posuere ac ut consequat semper.</span>
+                          </p>
+                          <p></p>
+                          <dl className="data-list aos-init"></dl>
+                          <div className="quote aos-init">
+                            <p>
+                              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus et molestie ac feugiat sed lectus. Eleifend mi in nulla posuere sollicitudin.&nbsp;</span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className={`module module--light module--modal module--team-modal ${activeMember === 'VK' ? 'module--modal-on' : ''}`} id="veerbhan-kheterpal">
+                      <div className="wrapper">
+                        <div className="module__content">
+                          <h2 className="module__title aos-init">Veerbhan Kheterpal</h2>
+                          <span className="module__close-btn" onClick={() => this.setState({ activeMember: '' })}>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><defs></defs><title>Close</title><g data-name="Layer 2"><g><path className="cls-1" d="M10,14.69.33,5.06,5.06.33,14.69,10l10-10L30,5.34l-10,10L29.72,25,25,29.72,15.31,20l-10,10L0,24.66Z"></path></g></g></svg>
+                          </span>
+                          <div className="module__member-img aos-init" style={{backgroundImage: 'url(https://quadric.io/uploads/attachment/file/127/client_qdc190319-525.jpg)'}}>
+                          </div>
+                          <p className="aos-init"></p>
+                          <p>
+                            <span><strong>Cofounder &amp; CEO<br /></strong><br />Veerbhan has founded three technology companies and has full stack expertise spanning from ASIC’s and Datacenters to consumer facing products. Along with his Quadric co-founders, Veerbhan co-founded 21, Inc (in 2013) with the goal of bringing high-performance supercomputers to the cryptocurrency space. Veerbhan served in various roles ranging from designing&nbsp;</span><span>custom ASICs</span><span>&nbsp;(3 chips in 18 months), developing web scale blockchain backends &amp; building consumer facing mobile apps and products. Prior to 21, Veerbhan co-founded Fabbrix, Inc (in 2005) which was&nbsp;</span><span><br /></span><span>acquired by PDF Solutions in 2007</span><span>. Fabbrix was focused on tools and flows that enabled design for manufacturability of complex Integrated Circuits. Post acquisition, Veer led several initiatives at PDF Solutions including product roadmap, data analytics &amp; technical marketing.</span>
+                          </p>
+                          <p></p>
+                          <dl className="data-list aos-init">
+                            <div className="data-list__row">
+                              <dt>Education</dt><dd><p><span>Ph.D, M.S ECE from Carnegie Mellon University 2005<br />BS, ECE (2002) from Indian Institute of Tech, Kharagpur</span></p></dd>
+                            </div>
+                            <div className="data-list__row">
+                              <dt>Linkedin</dt><dd><a className="link" target="_blank" rel="noopener noreferrer"href="https://www.linkedin.com/in/veerbhan/">View Profile</a></dd>
+                            </div>
+                          </dl>
+                          <div className="quote aos-init">
+                            <p>
+                              <span>Veer is r</span><span>esponsible for designing a memorable journey for everyone involved with <a href="http://quadric.io/">quadric.io</a> and building an amazing company. Always looking for breakthroughs in technology, relationships, recruiting &amp; parenting.</span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="module module--light module--modal module--team-modal" id="ananth-durbha">
+                      <div className="wrapper">
+                        <div className="module__content">
+                          <h2 className="module__title aos-init">Ananth Durbha</h2>
+                          <a className="module__close-btn" href="https://quadric.io/#">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><defs></defs><title>Get_In_Touch_Close_CTA</title><g data-name="Layer 2"><g><path className="cls-1" d="M10,14.69.33,5.06,5.06.33,14.69,10l10-10L30,5.34l-10,10L29.72,25,25,29.72,15.31,20l-10,10L0,24.66Z"></path></g></g></svg>
+                          </a>
+                          <div className="module__member-img aos-init" style={{backgroundImage: 'url(https://quadric.io/uploads/attachment/file/128/client_qdc190319-242.jpg)'}}></div>
+                          <p className="aos-init"></p>
+                          <p></p><p></p>
+                          <dl className="data-list aos-init"></dl>
+                          <div className="quote aos-init">
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="module module--light module--modal module--team-modal" id="jack-wang">
+                      <div className="wrapper">
+                        <div className="module__content">
+                          <h2 className="module__title aos-init">Jack Wang</h2>
+                          <a className="module__close-btn" href="https://quadric.io/#">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><defs></defs><title>Get_In_Touch_Close_CTA</title><g data-name="Layer 2"><g><path className="cls-1" d="M10,14.69.33,5.06,5.06.33,14.69,10l10-10L30,5.34l-10,10L29.72,25,25,29.72,15.31,20l-10,10L0,24.66Z"></path></g></g></svg>
+                          </a>
+                          <div className="module__member-img aos-init" style={{backgroundImage: 'url(https://quadric.io/uploads/attachment/file/129/client_qdc190319-280.jpg)'}}></div>
+                          <p className="aos-init"></p>
+                          <p></p><p></p>
+                          <dl className="data-list aos-init"></dl>
+                          <div className="quote aos-init">
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="module module--light module--modal module--team-modal" id="shayan-yassami">
+                      <div className="wrapper">
+                        <div className="module__content">
+                          <h2 className="module__title aos-init">Shayan Yassami</h2>
+                          <a className="module__close-btn" href="https://quadric.io/#">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><defs></defs><title>Get_In_Touch_Close_CTA</title><g data-name="Layer 2"><g><path className="cls-1" d="M10,14.69.33,5.06,5.06.33,14.69,10l10-10L30,5.34l-10,10L29.72,25,25,29.72,15.31,20l-10,10L0,24.66Z"></path></g></g></svg>
+                          </a>
+                          <div className="module__member-img aos-init" style={{backgroundImage: 'url(https://quadric.io/uploads/attachment/file/106/client_qdc190319-731.jpg)'}}></div>
+                          <p className="aos-init"></p>
+                          <p>
+                            <span><strong>Chief Financial Officer</strong><br /><br />Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus et molestie ac feugiat sed lectus. Eleifend mi in nulla posuere sollicitudin. Non pulvinar neque laoreet suspendisse interdum consectetur libero id. Dolor morbi non arcu risus quis varius quam quisque. Dignissim diam quis enim lobortis scelerisque fermentum dui faucibus in. Mi bibendum neque egestas congue quisque egestas diam in arcu. Montes nascetur ridiculus mus mauris vitae. Aliquam sem fringilla ut morbi tincidunt augue interdum velit. Arcu cursus vitae congue mauris rhoncus aenean vel. Vestibulum lectus mauris ultrices eros in cursus turpis. Sagittis eu volutpat odio facilisis mauris. Quam viverra orci sagittis eu volutpat odio facilisis mauris. Vulputate ut pharetra sit amet aliquam id diam. Morbi quis commodo odio aenean. Accumsan tortor posuere ac ut consequat semper.</span>
+                          </p>
+                          <p></p>
+                          <dl className="data-list aos-init"></dl>
+                          <div className="quote aos-init">
+                            <p>
+                              <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus et molestie ac feugiat sed lectus. Eleifend mi in nulla posuere sollicitudin.&nbsp;</span>
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="module module--light module--modal module--team-modal" id="brandon-powell">
+                      <div className="wrapper">
+                        <div className="module__content">
+                          <h2 className="module__title aos-init">Brandon Powell</h2>
+                          <a className="module__close-btn" href="https://quadric.io/#">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><defs></defs><title>Get_In_Touch_Close_CTA</title><g data-name="Layer 2"><g><path className="cls-1" d="M10,14.69.33,5.06,5.06.33,14.69,10l10-10L30,5.34l-10,10L29.72,25,25,29.72,15.31,20l-10,10L0,24.66Z"></path></g></g></svg>
+                          </a>
+                          <p className="aos-init"></p>
+                          <p></p>
+                          <p></p>
+                          <dl className="data-list aos-init"></dl>
+                          <div className="quote aos-init">
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="module module--light module--modal module--team-modal" id="sammie-qadir">
+                      <div className="wrapper">
+                        <div className="module__content">
+                          <h2 className="module__title aos-init">Sammie Qadir</h2>
+                          <a className="module__close-btn" href="https://quadric.io/#">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><defs></defs><title>Get_In_Touch_Close_CTA</title><g data-name="Layer 2"><g><path className="cls-1" d="M10,14.69.33,5.06,5.06.33,14.69,10l10-10L30,5.34l-10,10L29.72,25,25,29.72,15.31,20l-10,10L0,24.66Z"></path></g></g></svg>
+                          </a>
+                          <p className="aos-init"></p>
+                          <p></p><p></p>
+                          <dl className="data-list aos-init"></dl>
+                          <div className="quote aos-init">
+                            <p></p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className={`module module--light module--modal ${showJoinOurTeam ? 'module--modal-on' : ''}`}>
+                      <div className="wrapper">
+                        <div className="module__content">
+                          <h2 className="module__title aos-init">{joinOurTeam.title}</h2>
+                          <span className="module__close-btn" style={{cursor: 'pointer'}} onClick={() => this.setState({ showJoinOurTeam: false })}>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><defs></defs><title>Get_In_Touch_Close_CTA</title><g data-name="Layer 2"><g><path className="cls-1" d="M10,14.69.33,5.06,5.06.33,14.69,10l10-10L30,5.34l-10,10L29.72,25,25,29.72,15.31,20l-10,10L0,24.66Z"></path></g></g></svg>
+                          </span>
+                          <p className="aos-init">
+                            <ReactMarkdown source={joinOurTeam.description} />
+                            <span>
+                              <strong>What We Value:</strong><br />{joinOurTeam.whatWeHave}<br /><br />
+                              <strong>What We Expect:</strong><br />{joinOurTeam.whatWeExpect} <br /><br />
+                              <strong>Our Goal: </strong><br />{joinOurTeam.ourGoal}
+                            </span>
+                          </p>
+                          <div className="module__wide-block">
+                            <div className="grid aos-init">
+                              <div className="grid__gutter-sizer"></div>
+                              <div className="grid__sizer"></div>
+                              <ResponsiveReactGridLayout
+                                className="layout"
+                                style={{backgroundColor: '#FFFFFF'}}
+                                layouts={joinOurTeamLayout}
+                                cols={{lg: 60, md: 60, sm: 30, xs: 30, xxs: 30}}
+                                rowHeight={joinOurTeamRowHeight}
+                                breakpoints={{lg: 1200, md: 996, sm: 768, xs: 480, xxs: 0}}
+                              >
+                                {joinOurTeam.photos.map(photo => (<div key={photo.image.childImageSharp && photo.image.childImageSharp.fluid.src} className="grid__item" style={{backgroundColor: '#FFFFFF'}}>
+                                  <img alt="team" className="grid__imga" src={photo.image.childImageSharp && photo.image.childImageSharp.fluid.src} />
+                                </div>))}
+                              </ResponsiveReactGridLayout>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+          {active && !active && <div className="iScrollVerticalScrollbar iScrollLoneScrollbar iScrollVerticalScrollbar-custom">
+            <div className="iScrollIndicator iScrollIndicator-custom-4"></div>
+          </div>}
+        </div>
+      </div>
+    </>)
+  }
+}
+
+const LeftNav = ({ active }) => (
+  <>
+    <ul className="module__nav module__nav--technology">
+      <li className={`module__nav-item ${active === 1 ? 'active' : ''}`} data-menuanchor="technology">
+        <a className="module__nav-link" href="#technology">Overview</a>
+      </li>
+      <li className={`module__nav-item ${active === 2 ? 'active' : ''}`} data-menuanchor="benefits">
+        <a className="module__nav-link" href="#benefits">Benefits</a>
+      </li>
+      <li className={`module__nav-item ${active === 3 ? 'active' : ''}`} data-menuanchor="industries">
+        <a className="module__nav-link" href="#industries">Industries</a>
+      </li>
+    </ul>
+    {/* <ul className="module__nav module__nav--technology">
+      <li className="module__nav-item" data-menuanchor="technology">
+        <a className="module__nav-link" href="#technology">Overview</a>
+      </li>
+      <li className="module__nav-item module__nav-item--active" data-menuanchor="benefits">
+        <a className="module__nav-link" href="#benefits">Benefits</a>
+      </li>
+      <li className="module__nav-item" data-menuanchor="industries">
+        <a className="module__nav-link" href="#industries">Industries</a>
+      </li>
+    </ul>
+    <ul className="module__nav module__nav--technology">
+      <li className="module__nav-item" data-menuanchor="technology">
+        <a className="module__nav-link" href="#technology">Overview</a>
+      </li>
+      <li className="module__nav-item" data-menuanchor="benefits">
+        <a className="module__nav-link" href="#benefits">Benefits</a>
+      </li>
+      <li className="module__nav-item module__nav-item--active" data-menuanchor="industries">
+        <a className="module__nav-link" href="#industries">Industries</a>
+      </li>
+    </ul> */}
+    <ul className="module__nav module__nav--about module__nav--light">
+      <li className={`module__nav-item ${active === 4 ? 'active' : ''}`} data-menuanchor="about">
+        <a className="module__nav-link" href="#about">Overview</a>
+      </li>
+      <li className={`module__nav-item ${active === 5 ? 'active' : ''}`} data-menuanchor="team">
+        <a className="module__nav-link" href="#team">Team</a>
+      </li>
+      <li className={`module__nav-item ${active === 6 ? 'active' : ''}`} data-menuanchor="investors">
+        <a className="module__nav-link" href="#investors">Investors</a>
+      </li>
+    </ul>
+  </>
+)
+
+export class IndexPageTemplate extends React.Component {
+  constructor(props) {
+    super(props)
+
+    let nextX = 0;
+    let nextY = 0;
+    const newTeamMembers = props.data.about.team.members.filter(m => m.pinToTop)
+    const restTeamMembers = props.data.about.team.members.filter(m => !m.pinToTop)
+
+    while(restTeamMembers.length > 1) {
+      const idx = Math.floor(Math.random() * restTeamMembers.length)
+      newTeamMembers.push(restTeamMembers[idx])
+      restTeamMembers.splice(idx, 1)
+    }
+
+
+    newTeamMembers.push(restTeamMembers[0])
+    const layout = {
+      lg: newTeamMembers.map(m => {
+        let newWidth = Math.ceil(Math.random() * 2) * 12
+        if (newWidth === 24) {
+          newWidth = Math.random() > 0.5 ? 24 : 12
+        }
+        const width = nextX === 48 ? 12 : newWidth;
+        const newMember = {
+          i: m.key,
+          x: nextX,
+          y: nextY,
+          w: width,
+          h: width,
+        }
+        if (nextX + width > 48) {
+          nextX = 0
+          nextY += 12
+        } else {
+          nextX = nextX + width
+        }
+        return newMember
+      }),
+      xs: newTeamMembers.map((m, index) => {
+        const newMember = {
+          i: m.key,
+          x: index % 3 * 20,
+          y: Math.floor(index / 3) * 20,
+          w: 20,
+          h: 20,
+        }
+        return newMember
+      }),
+    }
+
+    this.state = {
+      active: 0,
+      showLeftNav: true,
+      width: 0,
+      randomImageIdx: Math.floor(props.data.images.length * Math.random()),
+      teamLayout: layout,
+      newTeamMembers,
+    }
+  }
+
+  componentDidMount() {
+    this.handleWindowSizeChange()
+    window.addEventListener('resize', this.handleWindowSizeChange)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.handleWindowSizeChange)
+  }
+
+  handleWindowSizeChange = () => {
+    this.setState({ width: window.innerWidth })
+  }
+
+  handleLeave = (origin, destination) => {
+    let newState = {
+      active: destination.index,
+      showLeftNav: true,
+    }
+
+    if (destination.index === 0) {
+      this.props.showNavbar(true)
+    } else if (origin.index === 0) {
+      this.props.showNavbar(false)
+    }
+
+    this.setState(newState)
+  }
+
+  render() {
+
+    const {
+      active,
+      showLeftNav,
+      width,
+      randomImageIdx,
+      teamLayout,
+      newTeamMembers,
+    } = this.state
+    const { data, hideModal } = this.props
+    console.log(randomImageIdx)
+
+    if (typeof window !== 'undefined') {
+      return (<div>
+        <ReactFullpage
+          scrollingSpeed = {1000} /* Options here */
+          sectionsColor={['#000000', '#000000', '#000000', '#000000', '#000000', '#000000', '#000000']}
+          scrollOverflow={true}
+          pluginWrapper={pluginWrapper}
+          onLeave={this.handleLeave}
+          render={({state, fullpageApi}) => {
+            return (
+              <ReactFullpage.Wrapper>
+                {/* <HomeSection data={data} active={active === 0} randomImageIdx={randomImageIdx || 0} />
+                <TechnologySection data={data.technology.overview} active={active === 1} onShowLearnMore={() => this.props.showLearnMore()} />
+                <BenefitSection data={data.technology.benefits} active={active === 2} onShowLearnMore={() => this.props.showLearnMore()} />
+                <IndustrySection data={data.technology.industries} active={active === 3} onShowLearnMore={() => this.props.showLearnMore()} />*/}
+                <AboutSection data={data.about.overview} active={active === 0} /> 
+                <TeamSection
+                  layout={teamLayout}
+                  data={data.about.team}
+                  members={newTeamMembers}
+                  joinOurTeam={data.joinOurTeam}
+                  width={width}
+                  active={active === 1}
+                  hideModal={hideModal}
+                />
+                <ContactSection data={data.investors} width={width} active={active === 2} onShowForm={(v) => this.setState({ showLeftNav: v })} />
+              </ReactFullpage.Wrapper>
+            )
+          }}
+        />
+        {showLeftNav && <LeftNav active={active} />}
+      </div>)
+    }
+
+    return null
+  }
+}
+
+IndexPageTemplate.propTypes = {
+  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
+  title: PropTypes.string,
+  heading: PropTypes.string,
+  subheading: PropTypes.string,
+  mainpitch: PropTypes.object,
+  description: PropTypes.string,
+  showNavbar: PropTypes.func,
+  intro: PropTypes.shape({
+    blurbs: PropTypes.array,
+  }),
+}
+
+class IndexPage extends React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      showNavbar: true,
+      showLearnMore: false,
+      hideModal: 0,
+    }
+  }
+
+  componentDidMount() {
+    window.addEventListener('keydown', this.handleKeyDown)
+    window.addEventListener('hashchange', this.de)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('keydown', this.handleKeyDown)
+    window.removeEventListener('hashchange', this.handleKeyDown)
+  }
+
+  handleKeyDown = (e) => {
+    if (e.code === 'Backspace' || e.code === 'Escape') {
+
+      this.setState({
+        hideModal: this.state.hideModal + 1,
+        showLearnMore: false,
+      })
+    }
+  }  
+
+  de = (e) => {
+    this.setState({
+      hideModal: this.state.hideModal + 1,
+    })
+  }
+
+  render() {
+    const { data } = this.props
+    const { showLearnMore, hideModal } = this.state
+    const { frontmatter } = data.markdownRemark
+
+    return (<>
+      <Layout showNavbar={this.state.showNavbar}>
+        <IndexPageTemplate
+          hideModal={hideModal}
+          data={frontmatter}
+          showNavbar={ (showNavbar) => this.setState({ showNavbar }) }
+          showLearnMore={ () => this.setState({ showLearnMore: true }) }
+        />
+      </Layout>
+      <div className={`modal ${showLearnMore ? 'modal--in' : ''}`} id="doc-modal">
+        <div className="modal__scroll-container">
+          <div className="wrapper">
+            <div className="modal__body">
+              {frontmatter.paperwork.map(paperwork => (<div className={`doc-section ${paperwork.imageAlign || ''}`} id={paperwork.id} key={paperwork.id}>
+                <ReactMarkdown source={paperwork.content} />
+              </div>))}
+            </div>
+            <div className="modal__aside">
+              <button className="modal__aside-close">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30"><defs></defs><title>Get_In_Touch_Close_CTA</title><g data-name="Layer 2"><g><path class="cls-1" d="M10,14.69.33,5.06,5.06.33,14.69,10l10-10L30,5.34l-10,10L29.72,25,25,29.72,15.31,20l-10,10L0,24.66Z"></path></g></g></svg>
+              </button>
+              <ul className="module__nav module__nav--modal module__nav--light">
+                <li className="module__nav-item active">
+                  <a className="module__nav-link" href="#edge-supercomputing">Edge Supercomputing</a>
+                </li>
+                <li className="module__nav-item">
+                  <a className="module__nav-link" href="#executive-summary">Executive Summary</a>
+                </li>
+                <li className="module__nav-item">
+                  <a className="module__nav-link" href="#introduction">Introduction</a>
+                </li>
+                <li className="module__nav-item module__nav-item--sub">
+                  <a className="module__nav-link" href="#heter-compute">The Problem: Heterogeneous Compute</a>
+                </li>
+                <li className="module__nav-item module__nav-item--sub">
+                  <a className="module__nav-link" href="#unified-compute">The Solution: Unified Compute</a>
+                </li>
+                <li className="module__nav-item">
+                  <a className="module__nav-link" href="#software-ecosystem">Software Ecosystem</a>
+                </li>
+                <li className="module__nav-item module__nav-item--sub">
+                  <a className="module__nav-link" href="#unified-software">Unified Software</a>
+                </li>
+                <li className="module__nav-item module__nav-item--sub">
+                  <a className="module__nav-link" href="#computer-vision-image-histograms">Computer Vision: Image Histograms</a>
+                </li>
+                <li className="module__nav-item module__nav-item--sub">
+                  <a className="module__nav-link" href="#deep-neural-networks-resnet-50">Deep Neural Networks: RESNET 50</a>
+                </li>
+                <li className="module__nav-item module__nav-item--sub">
+                  <a className="module__nav-link" href="#full-robot-application-sense-and-control">Full Robot Application: Sense and Control</a>
+                </li>
+                <li className="module__nav-item">
+                  <a className="module__nav-link" href="#hardware-ecosystem">Hardware Ecosystem</a>
+                </li>
+                <li className="module__nav-item module__nav-item--sub">
+                  <a className="module__nav-link" href="#quadric-supercomputer">Quadric Supercomputer</a>
+                </li>
+                <li className="module__nav-item module__nav-item--sub">
+                  <a className="module__nav-link" href="#quadric-processor-array-and-core">Quadric Processor, Array, and Core</a>
+                </li>
+                <li className="module__nav-item">
+                  <a className="module__nav-link" href="#applications">Applications</a>
+                </li>
+                <li className="module__nav-item">
+                  <a className="module__nav-link" href="#conclusion">Conclusion</a>
+                </li>
+                <li className="module__nav-item permanent-active">
+                  <a className="module__nav-link" data-toggle="modal" data-menuanchor="investors" href="#contact">Contact</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>)
+  }
+}
+
+IndexPage.propTypes = {
+  data: PropTypes.shape({
+    markdownRemark: PropTypes.shape({
+      frontmatter: PropTypes.object,
+    }),
+  }),
+}
+
+export default IndexPage
+
+export const pageQuery = graphql`
+  query IndexPageTemplate {
+    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
+      frontmatter {
+        title
+        subtitle
+        images {
+          id
+          image {
+            childImageSharp {
+              fluid {
+                src
+              }
+            }
+          }
+        }
+        technology {
+          overview {
+            title
+            description
+            image {
+              childImageSharp {
+                fluid {
+                  src
+                }
+              }
+            }
+          }
+          benefits {
+            image {
+              childImageSharp {
+                fluid {
+                  src
+                }
+              }
+            }
+            description
+            heading1
+            heading2
+            heading3
+            content1
+            content2
+            content3
+          }
+          industries {
+            description
+          }
+        }
+        about {
+          team {
+            description
+            members {
+              key
+              name
+              position
+              pinToTop
+              thumbPhoto {
+                childImageSharp {
+                  fluid {
+                    src
+                  }
+                }
+              }
+            }
+          }
+          overview {
+            content
+            image {
+              childImageSharp {
+                fluid {
+                  src
+                }
+              }
+            }
+          }
+        }
+        investors {
+          image {
+            childImageSharp {
+              fluid {
+                src
+              }
+            }
+          }
+          website
+          name
+          lg {
+            x
+            y
+            width
+            height
+          }
+          md {
+            x
+            y
+            width
+            height
+          }
+          sm {
+            x
+            y
+            width
+            height
+          }
+          xs {
+            x
+            y
+            width
+            height
+          }
+        }
+        joinOurTeam {
+          title
+          description
+          whatWeHave
+          whatWeExpect
+          ourGoal
+          photos {
+            image {
+              childImageSharp {
+                fluid {
+                  src
+                }
+              }
+            }
+            lg {
+              x
+              y
+              width
+              height
+            }
+            md {
+              x
+              y
+              width
+              height
+            }
+            sm {
+              x
+              y
+              width
+              height
+            }
+            xs {
+              x
+              y
+              width
+              height
+            }
+          }
+        }
+        paperwork {
+          content
+          id
+          imageAlign
+        }
+      }
+    }
+  }
+`
